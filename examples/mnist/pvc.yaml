@@ -7,15 +7,4 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: models
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 20Gi
+      storage: 10Gi
