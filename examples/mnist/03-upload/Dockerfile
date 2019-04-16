@@ -1,6 +1,4 @@
-FROM python:3.6-slim
-RUN apt update && apt install -y jq
-RUN pip install hs --pre
+FROM tidylobster/odsc-base:1.0
 ADD ./execute.sh /src/
 WORKDIR /src/
 ENTRYPOINT [ "bash", "execute.sh" ]
