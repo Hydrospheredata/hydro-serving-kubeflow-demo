@@ -11,5 +11,5 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: ambassador
+          serviceName: ml-pipeline-ui 
           servicePort: 80

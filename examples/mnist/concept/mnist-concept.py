@@ -60,7 +60,7 @@ decoder_op = decoder(encoder_op)
 
 y_pred, y_true = decoder_op, imgs_flattened
 loss = tf.reduce_mean(tf.pow(y_true - y_pred, 2), axis=-1)
-reconstructed = tf.expand_dims(loss, -1)
+score = tf.cast(tf.expand_dims(loss, -1), tf.float64) 
 optimizer = tf.train.AdamOptimizer(learning_rate).minimize(loss)
 
 
@@ -83,7 +83,7 @@ with tf.Session() as sess:
                 "logits": tf.placeholder(dtype=tf.float32, shape=(None, 10)),
                 "classes": tf.placeholder(dtype=tf.string, shape=(None, 1)),
             }, 
-            outputs={"reconstructed": reconstructed})
+            outputs={"score": score})
     }
 
     shutil.rmtree(models_path, ignore_errors=True)
